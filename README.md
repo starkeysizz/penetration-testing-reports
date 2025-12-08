@@ -110,3 +110,75 @@ SMTP configuration errors suggested broader security hygiene issues.
 6. Portfolio-Ready Summary (What You Actually Showcase)
 
 Performed a full-stack internal assessment against an Ubuntu server. Conducted host discovery, port scanning, web enumeration, and vulnerability scanning. Exploited weak SSH credentials via controlled brute force to gain shell access. Identified misconfigurations, outdated OS, and unrestricted sudo privileges leading to full system compromise. Delivered actionable remediation steps including OS upgrade paths, SSH hardening, and credential policy enforcement.
+
+
+
+
+
+SSH Login Test – Ethical Hacking Assessment 
+
+ Objective
+
+Conducted an authorized security assessment to verify SSH authentication controls on a target Ubuntu system (192.168.0.43). The goal was to confirm service availability, validate credential strength, and assess exposure risks related to remote access.
+
+ Scope & Environment
+
+* **Role:** Ethical Hacker / Security Tester
+* **Target:** Ubuntu host (192.168.0.43)
+* **Tools:** Python 3, Paramiko, Kali Linux, Virtual Environment (venv)
+* **Purpose:** Evaluate SSH service configuration, credential validity, and defensive posture.
+
+ Methodology
+
+ 1. Environment Preparation
+
+* Updated system package lists.
+* Installed Python virtual environment tooling (`python3-venv`).
+* Created and activated an isolated venv for controlled dependency management.
+* Installed the Paramiko SSH automation library and verified functionality.
+
+ 2. Test Script Development
+
+Wrote a Python-based SSH authentication tester to:
+
+* Initiate an SSH connection to the target.
+* Validate supplied credentials.
+* Execute a basic command (`whoami`) upon successful login.
+* Handle authentication, network, and connection errors gracefully.
+
+ 3. Execution
+
+* Assigned script execution permissions.
+* Executed the test within the virtual environment using the installed Paramiko package.
+
+ Results
+
+* Connection attempt triggered a **“No existing session”** error.
+* Authentication was not established, indicating that SSH access was not available under the provided conditions.
+
+ Analysis
+
+Key factors likely contributing to the failed SSH session:
+
+* SSH service may be disabled or not installed on the target.
+* Port 22 may be blocked or filtered by firewall rules.
+* Network segmentation or connectivity issues could be preventing the handshake.
+* Provided credentials may be invalid or not associated with SSH login rights.
+
+ Recommendations
+
+To complete a full authentication assessment, the following checks are advised:
+
+* Confirm SSH daemon status (`systemctl status ssh`).
+* Validate network reachability and firewall policies.
+* Ensure user account existence and password correctness.
+* Verify that port 22 is accessible from the testing machine.
+
+ Notes
+
+An initial system‑level pip installation was blocked by Kali Linux’s externally‑managed environment policy (PEP 668). Implemented a compliant solution by installing dependencies inside a Python virtual environment.
+
+ Summary
+
+Performed a structured SSH login assessment as part of an authorized ethical hacking engagement. Ensured proper dependency isolation, created automation tooling for credential verification, executed controlled tests, and documented results with professional clarity. This work demonstrates capability in system access testing, Python scripting for automation, and secure operational handling of lab environments.
+
